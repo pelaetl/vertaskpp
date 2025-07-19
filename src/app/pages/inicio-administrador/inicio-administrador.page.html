@@ -1,0 +1,78 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="title-search-row">
+        <span class="logo-title">VerTask</span>
+        <ion-searchbar placeholder="Buscar tarefas" class="searchbar"></ion-searchbar>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" fill="solid" class="nova-tarefa-btn">+ Nova Tarefa</ion-button>
+      <ion-icon name="person-circle-outline" class="profile-icon"></ion-icon>
+      <span class="profile-name">bbb</span>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="inicio-admin-content">
+  <div class="inicio-admin-grid">
+    <div class="inicio-admin-col-esquerda">
+      <h2 class="section-title">Prioridades</h2>
+      <ion-card class="prioridades-card">
+        <ion-card-content class="card-content">Não há tarefas pendentes</ion-card-content>
+      </ion-card>
+
+      <h2 class="section-title">Minhas Tarefas</h2>
+      <ion-card class="minhas-tarefas-card">
+        <ion-card-content class="card-content">Você não tem tarefas atribuídas</ion-card-content>
+      </ion-card>
+
+      <h2 class="section-title">Calendário de Tarefas</h2>
+      <div class="calendario-row">
+        <div class="calendario-content calendario-metade-esquerda">
+          <ion-datetime
+            presentation="date"
+            [value]="selectedDate"
+            (ionChange)="onDateChange($event)"
+            class="calendario-datetime"
+          ></ion-datetime>
+        </div>
+        <!-- <div class="calendario-info-card calendario-metade-direita">
+          <div class="calendario-info-data">{{ selectedDate | date: 'd ' + 'de' + ' MMMM ' + 'de' + ' yyyy' }}</div>
+          <div class="calendario-info-status">{{ calendarioStatus }}</div>
+        </div> -->
+      </div>
+    </div>
+    <div class="inicio-admin-col-direita">
+      <h2 class="section-title">Resumo de Tarefas por Funcionário</h2>
+      <div class="resumo-row">
+        <ion-card class="funcionario-card">
+          <ion-card-content>
+            <div class="funcionario-info">
+              <div class="funcionario-avatar">a</div>
+              <div>
+                <div class="funcionario-nome">aaa</div>
+                <div class="funcionario-total">Total: 0 tarefas</div>
+              </div>
+            </div>
+            <div class="funcionario-status">Sem tarefas</div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="funcionario-card">
+          <ion-card-content>
+            <div class="funcionario-info">
+              <div class="funcionario-avatar">r</div>
+              <div>
+                <div class="funcionario-nome">ramonzin</div>
+                <div class="funcionario-total">Total: 0 tarefas</div>
+              </div>
+            </div>
+            <div class="funcionario-status">Sem tarefas</div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-button fill="outline" class="relatorio-btn">Ver relatório completo</ion-button>
+    </div>
+  </div>
+</ion-content>
