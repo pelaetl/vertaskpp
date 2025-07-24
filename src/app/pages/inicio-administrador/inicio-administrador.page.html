@@ -1,6 +1,24 @@
-
+<ion-menu side="start" menuId="main-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item routerLink="/inicio-administrador">Início</ion-item>
+      <ion-item routerLink="/minhas-tarefas">Minhas Tarefas</ion-item>
+      <ion-item routerLink="/cadastro-funcionario">Cadastro Funcionário</ion-item>
+      <ion-item routerLink="/cadastro-administrador">Cadastro Administrador</ion-item>
+      <ion-item routerLink="/setor">Setores</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       <div class="title-search-row">
         <span class="logo-title">VerTask</span>
@@ -14,7 +32,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="inicio-admin-content">
+
+
+<ion-content [fullscreen]="true" class="inicio-admin-content" id="main-content">
   <div class="inicio-admin-grid">
     <div class="inicio-admin-col-esquerda">
       <h2 class="section-title">Prioridades</h2>
@@ -30,17 +50,9 @@
       <h2 class="section-title">Calendário de Tarefas</h2>
       <div class="calendario-row">
         <div class="calendario-content calendario-metade-esquerda">
-          <ion-datetime
-            presentation="date"
-            [value]="selectedDate"
-            (ionChange)="onDateChange($event)"
-            class="calendario-datetime"
-          ></ion-datetime>
+          <ion-datetime presentation="date" [value]="selectedDate" (ionChange)="onDateChange($event)"
+            class="calendario-datetime"></ion-datetime>
         </div>
-        <!-- <div class="calendario-info-card calendario-metade-direita">
-          <div class="calendario-info-data">{{ selectedDate | date: 'd ' + 'de' + ' MMMM ' + 'de' + ' yyyy' }}</div>
-          <div class="calendario-info-status">{{ calendarioStatus }}</div>
-        </div> -->
       </div>
     </div>
     <div class="inicio-admin-col-direita">

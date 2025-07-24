@@ -2,6 +2,7 @@
 .inicio-admin-grid {
   display: flex;
   gap: 32px;
+  margin: 15px;
 }
 .inicio-admin-col-esquerda {
   flex: 1;
@@ -33,15 +34,12 @@
   max-width: 300px;
   margin-left: 20px;
 }
-.nova-tarefa-btn {
-  margin-right: 15px;
-}
 .profile-icon {
   font-size: 2em;
 }
 .profile-name {
   margin-left: 5px;
-  margin-right: 25px;
+  margin-right: 45px;
 }
 
 // Conteúdo principal
