@@ -1,13 +1,25 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>setor</ion-title>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio-administrador"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Setor</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">setor</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="formGroup" (ngSubmit)="salvar()">
+    <ion-item>
+      <ion-label position="stacked">Nome do Setor</ion-label>
+      <ion-input type="text" formControlName="nomeSetor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descrição do Setor</ion-label>
+      <ion-input type="text" formControlName="descricaoSetor"></ion-input>
+    </ion-item>
+
+
+    <ion-button type="submit" expand="block" color="primary" [disabled]="!formGroup.valid">Salvar</ion-button>
+  </form>
 </ion-content>

@@ -8,12 +8,15 @@ import { SetorPageRoutingModule } from './setor-routing.module';
 
 import { SetorPage } from './setor.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SetorPageRoutingModule
+    SetorPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [SetorPage]
 })
