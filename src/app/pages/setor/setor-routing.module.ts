@@ -7,11 +7,17 @@ const routes: Routes = [
   {
     path: '',
     component: SetorPage
+  },
+  {
+    path: ':id',
+    component: SetorPage
   }
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SetorPageRoutingModule {}
+export class SetorPageRoutingModule { }
