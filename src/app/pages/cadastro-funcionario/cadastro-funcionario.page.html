@@ -22,7 +22,7 @@
         <ion-item>
           <ion-label position="stacked">Setor</ion-label>
           <ion-select okText="Confirmar" cancelText="Cancelar" placeholder="Selecione um setor" formControlName="setor">
-            <ion-select-option *ngFor="let setor of setores" [value]="setor">{{setor.nome}}</ion-select-option>
+            <ion-select-option *ngFor="let setor of setores" [value]="setor">{{setor.getNome}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-button type="submit" expand="block" color="primary" [disabled]="!formGroup.valid">Criar Conta</ion-button>

@@ -13,12 +13,12 @@ export class SetorService {
   constructor(private http: HttpClient) { }
 
   salvar(setor: Setor): Observable<Setor> {
-    if (setor.idSetor === 0) {
+    if (setor.getIdSetor() === 0) {
       // Criar nova setor (POST) 
       return this.http.post<Setor>(this.apiUrl, setor);
     } else {
       // Atualizar setor existente (PUT) 
-      return this.http.put<Setor>(`${this.apiUrl}/${setor.idSetor}`, setor);
+      return this.http.put<Setor>(`${this.apiUrl}/${setor.getIdSetor()}`, setor);
     }
   }
 
