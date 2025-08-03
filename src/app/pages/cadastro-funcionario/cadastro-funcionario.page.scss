@@ -8,8 +8,9 @@
 
 ion-select-placeholder {
   color: #6c757d;
-  font-size: 1.55rem;
+  font-size: 1.15rem;
 }
+
 
 .cadFuncionario-container {
   width: 100vw;
@@ -49,18 +50,21 @@ ion-select-placeholder {
 
 ion-item {
   --background: transparent;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   --min-height: 56px;
   --padding-start: 0;
   --padding-end: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
 }
 
 ion-input {
-  font-size: 1.55rem;
+  font-size: 1.25rem;
   min-height: 44px;
   --padding-start: 12px;
   --padding-end: 12px;
-  color: #111;
+  color: #222;
+  background: transparent;
 }
 
 ion-button {
@@ -90,11 +94,19 @@ ion-button {
 }
 
 ion-label {
-  color: #111 !important;
+  color: #222 !important;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .cadFuncionario-links p {
   color: #6c757d;
 }
 
+ion-select {
+  font-size: 1.15rem;
+  color: #222;
+  background: transparent;
+}
 
+//http://localhost:8100/cadastro-funcionario

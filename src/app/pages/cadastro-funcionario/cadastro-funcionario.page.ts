@@ -64,14 +64,14 @@ export class CadastroFuncionarioPage implements OnInit {
   }  
 
   carregarSetores() {
-    // this.setorService.listar().subscribe({
-    //   next: (setores) => {
-    //     this.setores = setores;
-    //   },
-    //   error: (err) => {
-    //     this.exibirMensagem('Erro ao carregar os setores.');
-    //   }
-    // });
+   this.setorService.listar().subscribe({
+     next: (setores) => {
+       this.setores = setores;
+     },
+     error: (err) => {
+       this.exibirMensagem('Erro ao carregar os setores.');
+     }
+   });
   }
 
   async exibirMensagem(texto: string) {
