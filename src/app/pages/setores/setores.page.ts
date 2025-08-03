@@ -31,7 +31,7 @@ export class SetoresPage implements OnInit {
 
     const alert = await this.alertController.create({
       header: 'Confirma a exclusão',
-      message: setor.getNome(),
+      message: setor.nome,
       buttons: [
         {
           text: 'Cancelar'
@@ -40,7 +40,7 @@ export class SetoresPage implements OnInit {
           text: 'Confirmar',
           cssClass: 'danger',
           handler: () => {
-            this.setorService.excluir(setor.getIdSetor()).subscribe({
+            this.setorService.excluir(setor.idSetor).subscribe({
               next:
                 () => {
                   this.carregarSetores();

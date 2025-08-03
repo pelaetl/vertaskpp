@@ -10,10 +10,10 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-list>
     <ion-item-sliding *ngFor="let setor of setores">
-      <ion-item [routerLink]="['/setor/', setor.getIdSetor()]" detail>     
+      <ion-item [routerLink]="['/setor/', setor.idSetor]" detail>     
           <ion-label>
-            <h2>{{setor.getNome}}</h2>
-            <p>{{setor.getDescricao}}</p>
+            <h2>{{setor.nome}}</h2>
+            <p>{{setor.descricao}}</p>
           </ion-label>        
       </ion-item>
       <ion-item-options side="start">

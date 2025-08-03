@@ -39,8 +39,8 @@ export class SetorPage implements OnInit {
       this.setorService.buscarPorId(id).subscribe({
         next: (setor) => {
           this.setor = setor;
-          this.formGroup.get('nomeSetor')?.setValue(this.setor.getNome());
-          this.formGroup.get('descricaoSetor')?.setValue(this.setor.getDescricao());
+          this.formGroup.get('nomeSetor')?.setValue(this.setor.nome);
+          this.formGroup.get('descricaoSetor')?.setValue(this.setor.descricao);
         },
         error: (erro) => {
           console.error('Erro ao buscar setor por ID:', erro);
@@ -50,10 +50,10 @@ export class SetorPage implements OnInit {
   }
 
   salvar() {
-    this.setor.setNome = this.formGroup.value.nomeSetor;
-    this.setor.setDescricao = this.formGroup.value.descricaoSetor;
+    this.setor.nome = this.formGroup.value.nomeSetor;
+    this.setor.descricao = this.formGroup.value.descricaoSetor;
 
-    this.setorService.existeSetorComNome(this.setor.getNome()).subscribe({
+    this.setorService.existeSetorComNome(this.setor.nome).subscribe({
       next: (existe) => {
         if (existe) {
           this.exibirMensagem('Este setor já está cadastrado.');
