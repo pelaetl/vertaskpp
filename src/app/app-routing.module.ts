@@ -59,6 +59,18 @@ const routes: Routes = [
     path: 'setores',
     loadChildren: () => import('./pages/setores/setores.module').then( m => m.SetoresPageModule)
   },
+  {
+    path: 'funcionarios',
+    loadChildren: () => import('./pages/funcionarios/funcionarios.module').then( m => m.FuncionariosPageModule)
+  },
+  {
+    path: 'add-funcionario',
+    loadChildren: () => import('./pages/add-funcionario/add-funcionario.module').then( m => m.AddFuncionarioPageModule)
+  },
+  {
+    path: 'funcionario',
+    loadChildren: () => import('./pages/funcionario/funcionario.module').then( m => m.FuncionarioPageModule)
+  },
 ];
 
 @NgModule({

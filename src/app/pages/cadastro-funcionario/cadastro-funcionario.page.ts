@@ -25,8 +25,10 @@ export class CadastroFuncionarioPage implements OnInit {
     this.funcionario = new Funcionario();
 
     this.formGroup = this.formBuilder.group({
-      //'produto': [this.funcionario.produto, Validators.compose([Validators.required])],
-      'valor': ['', Validators.compose([Validators.required])]
+      'setor': ['', Validators.compose([Validators.required])],
+      'nome': ['', Validators.compose([Validators.required])],
+      'email': ['', Validators.compose([Validators.required])],
+      'senha': ['', Validators.compose([Validators.required])],
     });
   }
 
