@@ -25,22 +25,19 @@ export class CadastroFuncionarioPage implements OnInit {
     this.funcionario = new Funcionario();
 
     this.formGroup = this.formBuilder.group({
-      'setor': ['', Validators.compose([Validators.required])],
-      'nome': ['', Validators.compose([Validators.required])],
-      'email': ['', Validators.compose([Validators.required])],
-      'senha': ['', Validators.compose([Validators.required])],
+      'setor': [this.funcionario.idSetor, Validators.compose([Validators.required])],
+      'nome': [this.funcionario.nome, Validators.compose([Validators.required])],
+      'email': [this.funcionario.email, Validators.compose([Validators.required])],
+      'senha': [this.funcionario.senha, Validators.compose([Validators.required])],
     });
   }
 
-  logar(){
 
-  }
-  
   ngOnInit() {
     this.carregarSetores();
 
     // const id = parseFloat(this.activatedRoute.snapshot.params['id']);
-    
+
     // if (!isNaN(id)) {
     //   this.funcionario = this.funcionarioService.buscarPorId(id);
     //   const produtoEncontrado = this.setores.find(t => t.id === this.funcionario.produto.id);
@@ -53,27 +50,33 @@ export class CadastroFuncionarioPage implements OnInit {
   }
 
   salvar() {
-    // this.funcionario.produto = this.formGroup.value.produto;
-    // this.funcionario.valor = this.formGroup.value.valor;
-    // if(this.funcionarioService.existeAlertaComIdProduto(this.alerta.produto.id)){
-    //   this.exibirMensagem('Este produto já possui um alerta.');
-    // }else{
-    //   this.alertaService.salvar(this.alerta);
-    //   this.exibirMensagem('Registro salvo com sucesso!!!');
-    //   this.navController.navigateBack('/alerta');
-    // }
+    this.funcionario.nome = this.formGroup.value.nome;
+    this.funcionario.email = this.formGroup.value.email;
+    this.funcionario.senha = this.formGroup.value.senha;
+    this.funcionario.idSetor = this.formGroup.value.setor;
 
-  }  
+    console.log('Enviando funcionário:', this.funcionario); // 🔍 para debug
+
+    this.funcionarioService.salvar(this.funcionario).subscribe({
+      next: () => {
+        this.exibirMensagem('Funcionário cadastrado com sucesso!');
+        this.navController.navigateBack('/inicio-funcionario'); // ajuste a rota conforme seu app
+      },
+      error: () => {
+        this.exibirMensagem('Erro ao cadastrar funcionário.');
+      }
+    });
+  }
 
   carregarSetores() {
-   this.setorService.listar().subscribe({
-     next: (setores) => {
-       this.setores = setores;
-     },
-     error: (err) => {
-       this.exibirMensagem('Erro ao carregar os setores.');
-     }
-   });
+    this.setorService.listar().subscribe({
+      next: (setores) => {
+        this.setores = setores;
+      },
+      error: (err) => {
+        this.exibirMensagem('Erro ao carregar os setores.');
+      }
+    });
   }
 
   async exibirMensagem(texto: string) {

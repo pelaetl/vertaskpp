@@ -3,6 +3,8 @@ import { Setor } from 'src/app/model/setor';
 import { SetorService } from 'src/app/services/setor.service';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setores',
@@ -15,7 +17,7 @@ export class SetoresPage implements OnInit {
   setores: Setor[];
   new: any;
 
-  constructor(private setorService: SetorService, private toastController: ToastController, private alertController: AlertController) {
+  constructor(private router: Router, private popoverController: PopoverController, private setorService: SetorService, private toastController: ToastController, private alertController: AlertController) {
     this.setores = []
   }
 
@@ -76,6 +78,28 @@ export class SetoresPage implements OnInit {
       }
     });
   }
+
+
+  popoverAberto = false;
+  popoverEvento: any;
+
+  abrirPerfil(ev: any) {
+    this.popoverEvento = ev;
+    this.popoverAberto = true;
+  }
+
+  editarPerfil() {
+
+  }
+
+  sair() {
+    // Fecha o popover primeiro
+    this.popoverController.dismiss().then(() => {
+      // Depois navega
+      this.router.navigate(['/login']);
+    });
+  }
+
 }
 
 

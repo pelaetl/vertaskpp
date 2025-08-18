@@ -67,10 +67,6 @@ const routes: Routes = [
     path: 'add-funcionario',
     loadChildren: () => import('./pages/add-funcionario/add-funcionario.module').then( m => m.AddFuncionarioPageModule)
   },
-  {
-    path: 'funcionario',
-    loadChildren: () => import('./pages/funcionario/funcionario.module').then( m => m.FuncionarioPageModule)
-  },
 ];
 
 @NgModule({

@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../model/usuario';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class UsuarioService {
-
-  private apiUrl = 'https://api-odinstore.odiloncorrea.com/usuarios';
+  private apiUrl = 'http://localhost:8080/api/v1/usuario';
+  private currentUserSubject = new BehaviorSubject<Usuario | null>(null);
+  currentUser$: Observable<Usuario | null> = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
   autenticar(login: String, senha: String): Observable<Usuario> {
-
-    const objetoJS = {
-      login: login,
-      senha: senha
-    };
-
-    const objetoJson = JSON.stringify(objetoJS);
-
-    const apiUrlTemp = this.apiUrl + "/auth"
-
-    return this.http.post<Usuario>(apiUrlTemp, objetoJson);
+    // backend espera { email, senha }
+    const payload = { email: login, senha };
+    const apiUrlTemp = `${this.apiUrl}/auth`;
+    return this.http.post<Usuario>(apiUrlTemp, payload).pipe(
+      tap(user => this.currentUserSubject.next(user))
+    );
   }
 
-  //localStorage
-  carregar(): Usuario {
-    let usuario = JSON.parse(localStorage.getItem('usuarioAutenticado') || '{}');
-    return usuario;
+  // método para setar manualmente (útil ao obter user por outro endpoint)
+  setCurrentUser(user: Usuario | null) {
+    this.currentUserSubject.next(user);
+  }
+
+  // método para obter valor síncrono (opcional)
+  getCurrentUserValue(): Usuario | null {
+    return this.currentUserSubject.value;
   }
 
   //localStorage
@@ -40,7 +39,6 @@ export class UsuarioService {
   //localStorage
   encerrar() {
     localStorage.removeItem('usuarioAutenticado');
-  }  
-
+  } 
 }
 

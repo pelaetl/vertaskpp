@@ -131,6 +131,14 @@
   max-width: 100%;
 }
 
+.calendario-datetime {
+  width: 650px;   // ajuste a largura desejada
+  height: 350px;  // ajuste a altura desejada
+  font-size: 1.2rem; // opcional, aumenta o texto
+  --min-width: 350px; // para garantir largura mínima
+  --min-height: 350px; // para garantir altura mínima
+}
+
 .calendario-content {
   flex: 1 1 0;
   display: flex;

@@ -35,3 +35,25 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* App toolbar and title styling for consistent appearance across pages */
+ion-toolbar.app-toolbar {
+  --min-height: 64px; /* ajuste se necessário */
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.title-search-row {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-title {
+  font-weight: 700;
+  font-size: clamp(20px, 4.5vw, 28px);
+  line-height: 1;
+  margin: 0;
+  color: var(--ion-color-primary-contrast, #000);
+  text-decoration: none;
+}

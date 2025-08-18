@@ -5,7 +5,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   senha: String;
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private toastController: ToastController, private navController: NavController, private usuarioService: UsuarioService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private toastController: ToastController, private navController: NavController, private usuarioService: UsuarioService) {
     this.login = "";
     this.senha = "";
     this.usuario = new Usuario();
@@ -39,16 +39,15 @@ export class LoginPage implements OnInit {
     this.senha = this.formGroup.value.senha;
 
     this.usuarioService.autenticar(this.login, this.senha).subscribe({
-      next: (usuario) => {
-        this.usuario = usuario;
-        this.usuarioService.registrar(this.usuario);
-        this.navController.navigateBack('/menu');
-      },
-      error: (err) => {
-        console.error('Login ou senha inválidos', err);
-        this.exibirMensagem('Login ou senha inválidos');
-      }
-    });
+  next: user => {
+    this.usuarioService.setCurrentUser(user);
+    this.router.navigate(['/inicio-administrador']); // ou rota correta
+  },
+  error: err => {
+    console.error('login error', err);
+    this.exibirMensagem('Login ou senha inválidos');
+  }
+});
   }
 
   async exibirMensagem(texto: string) {

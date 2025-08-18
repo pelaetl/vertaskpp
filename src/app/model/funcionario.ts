@@ -2,8 +2,8 @@ import { Usuario } from './usuario';
 
 export class Funcionario extends Usuario {
 
-    private idFuncionario: number;
-    private idSetor: number;
+    idFuncionario: number;
+    idSetor: number;
 
     constructor() {
         super();

@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setor',
@@ -22,7 +24,9 @@ export class SetorPage implements OnInit {
     private toastController: ToastController,
     private activatedRoute: ActivatedRoute,
     private navController: NavController,
-    private setorService: SetorService
+    private setorService: SetorService,
+    private popoverController: PopoverController,
+    private router: Router
   ) {
 
     this.setor = new Setor();
@@ -82,5 +86,27 @@ export class SetorPage implements OnInit {
     });
     toast.present()
   }
+
+
+  popoverAberto = false;
+  popoverEvento: any;
+
+  abrirPerfil(ev: any) {
+    this.popoverEvento = ev;
+    this.popoverAberto = true;
+  }
+
+  editarPerfil() {
+
+  }
+
+  sair() {
+    // Fecha o popover primeiro
+    this.popoverController.dismiss().then(() => {
+      // Depois navega
+      this.router.navigate(['/login']);
+    });
+  }
+
 }
 

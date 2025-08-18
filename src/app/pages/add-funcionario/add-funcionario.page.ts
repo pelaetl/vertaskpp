@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-add-funcionario',
   templateUrl: './add-funcionario.page.html',
   styleUrls: ['./add-funcionario.page.scss'],
+  standalone: false
 })
 export class AddFuncionarioPage implements OnInit {
 
